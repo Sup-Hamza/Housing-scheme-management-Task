@@ -1,0 +1,97 @@
+                 ┌───────────────┐
+                 │   PlotType    │
+                 │  <<enum>>     │
+                 └───────────────┘
+                          ▲
+                          │ uses
+                          │
+                 ┌───────────────┐
+                 │   ShapeType   │
+                 │  <<enum>>     │
+                 └───────────────┘
+
+
+                       ┌───────────────────────────┐
+                       │           Plot             │
+                       ├───────────────────────────┤
+                       │ - id : String              │
+                       │ - type : PlotType          │
+                       │ - shape : ShapeType        │
+                       │ - dimensions : double[]    │
+                       │ - area : double            │
+                       │ - price : double           │
+                       │ - available : boolean      │
+                       ├───────────────────────────┤
+                       │ + book() : boolean         │
+                       │ + cancel() : void          │
+                       │ + computeArea() : double   │
+                       │ + getSummary() : String    │
+                       └───────────────────────────┘
+                                   ▲
+                                   │ extends
+                                   │
+                       ┌───────────────────────────┐
+                       │        CornerPlot          │
+                       ├───────────────────────────┤
+                       │ - secondFrontage : double  │
+                       ├───────────────────────────┤
+                       │ + computeArea() : double   │
+                       │ + calculatePrice() : double│
+                       └───────────────────────────┘
+
+
+     ┌───────────────┐       ┌───────────────────────┐
+     │     Park      │       │         Shop           │
+     ├───────────────┤       ├───────────────────────┤
+     │ - name        │       │ - id                   │
+     │ - shape       │       │ - price                │
+     │ - dimensions  │       │ - available            │
+     │ - area        │       ├───────────────────────┤
+     └───────────────┘       │ + book()               │
+                             │ + cancel()             │
+                             └───────────────────────┘
+
+
+                 ┌───────────────────────────┐
+                 │     CommercialMarket      │
+                 ├───────────────────────────┤
+                 │ - shops : Shop[]          │
+                 ├───────────────────────────┤
+                 │ + addShop()               │
+                 │ + findVacantShops()       │
+                 └───────────────────────────┘
+
+
+                 ┌───────────────────────────┐
+                 │           Block            │
+                 ├───────────────────────────┤
+                 │ - name : String            │
+                 │ - plots : Plot[][]         │
+                 │ - parks : Park[]           │
+                 │ - market : CommercialMarket│
+                 ├───────────────────────────┤
+                 │ + bookPlot()               │
+                 │ + findPlot()               │
+                 └───────────────────────────┘
+
+
+                 ┌───────────────────────────┐
+                 │      HousingSociety       │
+                 ├───────────────────────────┤
+                 │ - name : String            │
+                 │ - blocks : Block[]         │
+                 ├───────────────────────────┤
+                 │ + addBlock()               │
+                 │ + bookPlot()               │
+                 └───────────────────────────┘
+
+
+                 ┌───────────────────────────┐
+                 │        CityHousing         │
+                 ├───────────────────────────┤
+                 │ - cityName : String        │
+                 │ - societies : HousingSociety[]│
+                 ├───────────────────────────┤
+                 │ + addSociety()             │
+                 │ + bookPlot()               │
+                 └───────────────────────────┘
